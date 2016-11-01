@@ -17,7 +17,8 @@
         android:layout_height="386dp"
         android:layout_below="@+id/videoView"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:id="@+id/rssList"/>
 
     <VideoView
         android:layout_width="match_parent"

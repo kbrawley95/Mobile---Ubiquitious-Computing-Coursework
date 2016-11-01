@@ -1,7 +1,7 @@
 package com.example.thedevelopmentbuild.vergerss;
 
 /**
- * Created by kieran on 26/10/2016.
+ * Created by kieran on 31/10/2016.
  */
 
 public class RSSItem {
@@ -80,7 +80,7 @@ public class RSSItem {
 
     @Override
     public String toString() {
-        return "VergeArticle [name=" + title + ", description=" +description+ ", link="
+        return "VergeArticle [name=" + title + ", description=" +description +  ", link="
                 + link + ", publication date="  + publicationDate + "]";
     }
 

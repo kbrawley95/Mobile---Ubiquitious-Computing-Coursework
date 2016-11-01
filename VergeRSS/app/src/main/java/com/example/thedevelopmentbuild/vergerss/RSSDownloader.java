@@ -21,7 +21,7 @@ import java.util.List;
 public class RSSDownloader {
 
     //Tag for Log statements
-    private static String myTag="RSSItems";
+    private static final String myTag="RSSItems";
 
     //Handler msg that represents we are posting a progress update.
     static final int POST_PROGRESS=1;
@@ -60,13 +60,14 @@ public class RSSDownloader {
             urlConnection.connect();
             InputStream stream = urlConnection.getInputStream();
 
-            XmlPullParserFactory xmlPullParser = XmlPullParserFactory.newInstance();
-            XmlPullParser vergeParser = xmlPullParser.newPullParser();
+            XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
+            factory.setNamespaceAware(true);
+            XmlPullParser pullParser = factory.newPullParser();
 
-            vergeParser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false);
-            vergeParser.setInput(stream, null);
+            pullParser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false);
+            pullParser.setInput(stream, null);
 
-            List<RSSItem> result = RSSXMLPullParser.getRSSItemsFromFile(vergeParser);
+            List<RSSItem> result = RSSXMLPullParser.getRSSItemsFromFile(pullParser);
             stream.close();
             return result;
         }catch(Exception e){
