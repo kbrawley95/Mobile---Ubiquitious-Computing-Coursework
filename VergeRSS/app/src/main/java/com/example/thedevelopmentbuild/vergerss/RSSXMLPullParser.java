@@ -44,6 +44,7 @@ public class RSSXMLPullParser {
             int counter=0;
             while(event!=XmlPullParser.END_DOCUMENT)
             {
+
                 String name = vergeParser.getName();
                 switch(event)
                 {
@@ -73,7 +74,12 @@ public class RSSXMLPullParser {
                         }
                         else if (name.equals(KEY_LINK))
                         {
-                            versionBasedEscapedHTML(result, KEY_LINK,text,counter);
+                            String relType=vergeParser.getAttributeValue(null,"rel");
+                            if(relType.equals("alternate")){
+
+                                versionBasedEscapedHTML(result,KEY_LINK,vergeParser
+                                        .getAttributeValue(null,"href"),counter);
+                            }
                         }
                         break;
                 }
@@ -88,6 +94,7 @@ public class RSSXMLPullParser {
         Log.i(myTag,result.toString());
         return result;
     }
+
 
     public static List<RSSItem> versionBasedEscapedHTML(List<RSSItem> result,String htmlTag, String
             htmlText, int counter){
@@ -126,7 +133,6 @@ public class RSSXMLPullParser {
                     result.get(counter).setImage(Html.fromHtml(htmlText).toString());
                 }
                 break;
-
 
             case KEY_LINK:
 

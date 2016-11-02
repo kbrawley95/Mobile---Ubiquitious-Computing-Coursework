@@ -66,7 +66,7 @@ public class RSSAdapter extends ArrayAdapter<RSSItem> {
 
 
 
-        //Setup a listener to switch from the loading indictor to the Image once it's ready
+        //Setup a listener to switch from the loading indicator to the Image once it's ready
         ImageLoadingListener listener = new ImageLoadingListener() {
             @Override
             public void onLoadingStarted(String imageUri, View view) {

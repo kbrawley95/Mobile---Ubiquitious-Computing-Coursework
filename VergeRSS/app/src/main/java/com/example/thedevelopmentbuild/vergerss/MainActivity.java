@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
                 String url = rssAdapter.getItem(position).getLink();
                 Intent i = new Intent(Intent.ACTION_VIEW);
                 i.setData(Uri.parse(url));
+                startActivity(i);
             }
         });
     }
