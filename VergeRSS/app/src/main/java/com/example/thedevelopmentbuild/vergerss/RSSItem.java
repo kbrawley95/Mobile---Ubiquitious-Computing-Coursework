@@ -81,7 +81,7 @@ public class RSSItem {
     @Override
     public String toString() {
         return "VergeArticle [name=" + title + ", description=" +description +  ", link="
-                + link + ", publication date="  + publicationDate + "]";
+                + link + ", image=" + image + ", publication date="  + publicationDate + "]";
     }
 
 }

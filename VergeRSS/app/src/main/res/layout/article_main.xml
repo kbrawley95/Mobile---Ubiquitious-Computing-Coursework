@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--Kieran Brawley. Matric No:S1433740-->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="fill_parent"
+                xmlns:tools="http://schemas.android.com/tools" android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:id="@+id/updatesLayout">
@@ -9,29 +9,33 @@
     <TextView
         android:id="@+id/articleTitleText"
         android:layout_width="wrap_content"
+        android:layout_centerHorizontal="true"
         android:layout_height="wrap_content"
-        android:textSize="14sp"
+        android:textSize="18sp"
         android:textAllCaps="true"
+        android:fontFamily="serif-monospace"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textStyle="bold"
         android:text="@string/article_title"/>
 
    <ImageView
        android:id="@+id/articleImage"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
        android:layout_below="@id/articleTitleText"
-       />
+       tools:ignore="ContentDescription" android:layout_width="250dp"
+       android:layout_height="250dp" android:layout_alignParentLeft="true"
+       android:layout_alignParentStart="true" android:layout_alignParentRight="true"
+       android:layout_alignParentEnd="true"/>
 
     <TextView
-        android:id="@+id/articleLink"
+        android:id="@+id/articleAuthor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_below="@id/articleImage"
-        android:text="@string/link"
-        android:textSize="12sp"
-        android:textColor="#04B4AE"
+        android:layout_below="@+id/articleImage"
+        android:text="@string/author"
+        android:fontFamily="serif-monospace"
+        android:textSize="16sp"
+        android:textColor="#000"
         android:layout_marginTop="15dp"/>
 
 
@@ -40,10 +44,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_below="@id/articleLink"
+        android:layout_below="@id/articleAuthor"
         android:text="@string/date"
-        android:textSize="12sp"
-        android:textColor="#04B4AE"
+        android:fontFamily="serif-monospace"
+        android:textSize="16sp"
+        android:textColor="#E91E63"
         android:layout_marginTop="15dp"/>
 
 </RelativeLayout>

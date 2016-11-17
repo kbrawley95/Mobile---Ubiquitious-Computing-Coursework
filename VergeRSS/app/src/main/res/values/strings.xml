@@ -3,4 +3,5 @@
     <string name="article_title">Article Title</string>
     <string name="date">Date</string>
     <string name="link">Link</string>
+    <string name="author">Author</string>
 </resources>

@@ -18,12 +18,15 @@ public class MainActivity extends AppCompatActivity {
     ListView rssItemsList;
 
 
-    private String rssUrl="http://www.theverge.com/rss/frontpage";
+    private String rssUrl="http://www.theverge.com/2016/11/1/13484656/verge-5th-anniversary-relaunch-2016";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        String path="https://youtu.be/YoV4HbMFAZI";
 
         Log.i("RSSFeed", "starting download Task");
         DownloadFile();
@@ -57,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
                         for (int i = 0; i < stuff.length; i++) {
                             stuff[i]=rssItemsArray.get(i).getPublicationDate();
                             stuff[i] = rssItemsArray.get(i).getTitle();
+                            stuff[i] = rssItemsArray.get(i).getImage();
                             stuff[i]=rssItemsArray.get(i).getDescription();
                             stuff[i]=rssItemsArray.get(i).getLink();
                         }

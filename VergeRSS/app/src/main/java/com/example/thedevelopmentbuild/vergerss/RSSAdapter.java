@@ -3,6 +3,10 @@ package com.example.thedevelopmentbuild.vergerss;
 import android.content.Context;
 
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.os.AsyncTask;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -61,43 +66,58 @@ public class RSSAdapter extends ArrayAdapter<RSSItem> {
         //Lookup view for data population
         TextView articleTitle = (TextView)row.findViewById(R.id.articleTitleText);
         final ImageView articleImage= (ImageView) row.findViewById(R.id.articleImage);
-        TextView link = (TextView)row.findViewById(R.id.articleLink);
+        TextView author =(TextView)row.findViewById(R.id.articleAuthor);
         TextView date = (TextView)row.findViewById(R.id.publicationDateText);
 
-
-
-        //Setup a listener to switch from the loading indicator to the Image once it's ready
-        ImageLoadingListener listener = new ImageLoadingListener() {
-            @Override
-            public void onLoadingStarted(String imageUri, View view) {
-
-            }
-
-            @Override
-            public void onLoadingFailed(String imageUri, View view, FailReason failReason) {
-
-            }
-
-            @Override
-            public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
-                articleImage.setVisibility(View.VISIBLE);
-            }
-
-            @Override
-            public void onLoadingCancelled(String imageUri, View view) {
-
-            }
-        };
-
-        imageLoader.displayImage(getItem(pos).getImage(), articleImage, options, listener);
-
-        //Populate the data in the template view using the data object.
+        //Populate View
         articleTitle.setText(getItem(pos).getTitle());
-        link.setText(getItem(pos).getLink());
+        new DownloadImageTask((ImageView) row.findViewById(R.id.articleImage))
+                .execute(getItem(pos).getImage());
+        author.setText(getItem(pos).getAuthor());
         date.setText(getItem(pos).getPublicationDate());
+        //row.setBackgroundColor(getContext().getResources().getColor(R.color.background));
+
+        //Alter Initial View Image
+        if(pos==0){
+
+            articleTitle.setText("");
+            new DownloadImageTask((ImageView) row.findViewById(R.id.articleImage))
+                    .execute("https://s3.amazonaws.com/static.oculus.com/website/2014/07/verge_news_logo.png");
+            date.setText("© The Verge, 2016. All Rights Reserved");
+
+        }
+
 
         return row;
 
     }
+
+    private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
+        ImageView bmImage;
+
+        public DownloadImageTask(ImageView bmImage) {
+            this.bmImage = bmImage;
+        }
+
+        @Override
+        protected Bitmap doInBackground(String... urls) {
+            String urlDisplay = urls[0];
+            Bitmap mIcon11 = null;
+            try {
+                InputStream in = new java.net.URL(urlDisplay).openStream();
+                mIcon11 = BitmapFactory.decodeStream(in);
+            } catch (Exception e) {
+                Log.e("Error", e.getMessage());
+                e.printStackTrace();
+            }
+            return mIcon11;
+        }
+
+        protected void onPostExecute(Bitmap result) {
+            bmImage.setImageBitmap(result);
+        }
+    }
+
+
 
 }

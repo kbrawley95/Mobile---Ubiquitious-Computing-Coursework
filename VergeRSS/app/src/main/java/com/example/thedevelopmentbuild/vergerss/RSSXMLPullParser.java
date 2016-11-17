@@ -1,20 +1,32 @@
 package com.example.thedevelopmentbuild.vergerss;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.nfc.Tag;
+import android.os.AsyncTask;
 import android.text.Html;
 import android.util.Log;
+import android.widget.ImageView;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+
+import static android.content.ContentValues.TAG;
+
 
 /**
  * Created by Kieran Brawley. Matric No:S1433740
@@ -25,9 +37,9 @@ public class RSSXMLPullParser {
     static final String KEY_PUBLICATION_DATE="published";
     static final String KEY_TITLE="title";
    // static final String KEY_DESCRIPTION="content";
-    static final String KEY_IMAGE="img";
+    static final String KEY_IMAGE="content";
     static final String KEY_LINK="link";
-    static final String KEY_AUTHOR="author";
+    static final String KEY_AUTHOR="name";
     private static final String myTag="Results";
 
     public static List<RSSItem>getRSSItemsFromFile(XmlPullParser vergeParser){
@@ -66,7 +78,17 @@ public class RSSXMLPullParser {
                         }
                         else if (name.equals(KEY_IMAGE)) {
 
-                            versionBasedEscapedHTML(result, KEY_IMAGE,text,counter);
+                            //Full Text
+                            Log.i("Info", text);
+
+                            String[] parts=text.split("src=\"");
+                            String[]finalParts=parts[1].split("\" />");
+
+                            String finalContents=finalParts[0];
+                            Log.i("Stuff","Img:" + finalContents);
+
+
+                            result.get(counter).setImage(finalContents);
                         }
                         else if (name.equals(KEY_AUTHOR))
                         {
@@ -125,13 +147,13 @@ public class RSSXMLPullParser {
 
             case KEY_IMAGE:
 
-                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
-                    result.get(counter).setImage(Html.fromHtml(htmlText,Html.FROM_HTML_MODE_COMPACT)
-                            .toString
-                                    ());
-                } else {
-                    result.get(counter).setImage(Html.fromHtml(htmlText).toString());
-                }
+//                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+//                    result.get(counter).setImage(Html.fromHtml(htmlText,Html.FROM_HTML_MODE_COMPACT)
+//                            .toString
+//                                    ());
+//                } else {
+//                    result.get(counter).setImage(Html.fromHtml(htmlText).toString());
+//                }
                 break;
 
             case KEY_LINK:
@@ -148,11 +170,12 @@ public class RSSXMLPullParser {
             case KEY_AUTHOR:
 
                 if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
-                    result.get(counter).setAuthor(Html.fromHtml(htmlText,Html.FROM_HTML_MODE_COMPACT)
+                    result.get(counter).setAuthor(Html.fromHtml("By " + htmlText,Html
+                            .FROM_HTML_MODE_COMPACT)
                             .toString
                                     ());
                 } else {
-                    result.get(counter).setAuthor(Html.fromHtml(htmlText).toString());
+                    result.get(counter).setAuthor(Html.fromHtml("By " + htmlText).toString());
                 }
                 break;
 
@@ -161,6 +184,10 @@ public class RSSXMLPullParser {
 
         return result;
     }
+
+
+
+
 
 
 }

@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
+    android:backgroundTint="@color/background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -14,18 +15,10 @@
 
     <ListView
         android:layout_width="match_parent"
-        android:layout_height="386dp"
+        android:layout_height="match_parent"
         android:layout_below="@+id/videoView"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/rssList"/>
-
-    <VideoView
-        android:layout_width="match_parent"
-        android:layout_height="213dp"
-        android:id="@+id/videoView"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:id="@+id/rssList" tools:ignore="UnknownId"/>
 
 </RelativeLayout>
