@@ -49,8 +49,6 @@ public class RSSDownloader {
             urlConnection.setRequestMethod("GET");
             urlConnection.setDoInput(true);
 
-            //this will be useful so that you can show a typical 0-100% progress bar
-            //int lengthOffile=ucon.getContentLength();
             Log.i(myTag, "Opened Connection");
 
             /************************************************

@@ -13,9 +13,11 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    ArrayList<RSSItem> rssItemsArray;
-    RSSAdapter rssAdapter;
-    ListView rssItemsList;
+    public static final String ITEM_KEY="item_key";
+
+    public static ArrayList<RSSItem> rssItemsArray;
+    public static RSSAdapter rssAdapter;
+    private ListView rssItemsList;
 
 
     private String rssUrl="http://www.theverge.com/2016/11/1/13484656/verge-5th-anniversary-relaunch-2016";
@@ -38,10 +40,10 @@ public class MainActivity extends AppCompatActivity {
         rssItemsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String url = rssAdapter.getItem(position).getLink();
-                Intent i = new Intent(Intent.ACTION_VIEW);
-                i.setData(Uri.parse(url));
-                startActivity(i);
+                RSSItem rssItem = rssAdapter.getItem(position);
+                Intent intent= new Intent(MainActivity.this, ArticleActivity.class);
+                intent.putExtra(ITEM_KEY, rssItem);
+                startActivity(intent);
             }
         });
     }

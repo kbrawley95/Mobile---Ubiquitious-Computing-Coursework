@@ -34,6 +34,7 @@ import static android.content.ContentValues.TAG;
 
 public class RSSXMLPullParser {
 
+
     static final String KEY_PUBLICATION_DATE="published";
     static final String KEY_TITLE="title";
    // static final String KEY_DESCRIPTION="content";
@@ -72,7 +73,7 @@ public class RSSXMLPullParser {
                         }
                         else if (name.equals(KEY_TITLE))
                         {
-                            RSSItem temp = new RSSItem("", "","","","","");
+                            RSSItem temp = new RSSItem("", "","","","","","");
                             result.add(temp);
                             result.get(counter).setTitle(text);
                         }
@@ -87,8 +88,13 @@ public class RSSXMLPullParser {
                             String finalContents=finalParts[0];
                             Log.i("Stuff","Img:" + finalContents);
 
+                            String description[]=finalParts[1].split("Continue reading");
+                            Log.i("Description","\nDescription:" + description[0]);
+
 
                             result.get(counter).setImage(finalContents);
+
+                            versionBasedEscapedHTML(result, KEY_IMAGE,description[0],counter);
                         }
                         else if (name.equals(KEY_AUTHOR))
                         {
@@ -147,23 +153,21 @@ public class RSSXMLPullParser {
 
             case KEY_IMAGE:
 
-//                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
-//                    result.get(counter).setImage(Html.fromHtml(htmlText,Html.FROM_HTML_MODE_COMPACT)
-//                            .toString
-//                                    ());
-//                } else {
-//                    result.get(counter).setImage(Html.fromHtml(htmlText).toString());
-//                }
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+                    result.get(counter).setDescription(Html.fromHtml(htmlText,Html.FROM_HTML_MODE_COMPACT)
+                            .toString
+                                    ());
+                } else {
+                    result.get(counter).setDescription(Html.fromHtml(htmlText).toString());
+                }
                 break;
 
             case KEY_LINK:
 
                 if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
-                    result.get(counter).setLink(Html.fromHtml(htmlText,Html.FROM_HTML_MODE_COMPACT)
-                            .toString
-                                    ());
+                    result.get(counter).setLink(htmlText);
                 } else {
-                    result.get(counter).setLink(Html.fromHtml(htmlText).toString());
+                    result.get(counter).setLink(htmlText);
                 }
                 break;
 
