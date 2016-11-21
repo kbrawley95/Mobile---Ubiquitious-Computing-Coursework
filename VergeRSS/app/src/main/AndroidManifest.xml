@@ -12,7 +12,8 @@
     <application
         android:allowBackup="true"
         android:fontFamily="serif-monospace"
-        android:icon="@mipmap/ic_launcher"
+        android:textSize="24sp"
+        android:icon="@drawable/logo"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
