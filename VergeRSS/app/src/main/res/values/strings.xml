@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">News</string>
+    <string name="app_name">TechBean</string>
     <string name="article_title">Article Title</string>
     <string name="date">Date</string>
     <string name="link">Link</string>

@@ -4,8 +4,18 @@
                 xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
+
+
     <RelativeLayout android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:background="@color/background">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </android.support.design.widget.AppBarLayout>
+
+
     <TextView
         android:text="@string/article_title"
         android:layout_width="wrap_content"
@@ -13,8 +23,12 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-
+        android:textColor="@color/primaryText"
         android:textAllCaps="true"
+        android:shadowColor="@android:color/black"
+        android:shadowDx="3"
+        android:shadowDy="-3"
+        android:shadowRadius="1.5"
         android:fontFamily="serif-monospace"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textStyle="bold"
@@ -26,8 +40,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/articleTitle"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:id="@+id/articleImage" tools:ignore="ContentDescription"/>
+        android:layout_marginTop="20dp"
+        android:id="@+id/articleImage" tools:ignore="ContentDescription"
+        />
     <TextView
         android:text="@string/article_description"
         android:layout_width="wrap_content"
@@ -36,10 +51,15 @@
         android:layout_centerHorizontal="true"
         android:id="@+id/articleDescription"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:textColor="@color/colorAccent"
-        android:fontFamily="sans-serif"
+        android:shadowColor="@android:color/black"
+        android:shadowDx="3"
+        android:shadowDy="-3"
+        android:shadowRadius="1.5"
+        android:textColor="@color/primaryText"
+        android:fontFamily="monospace"
         android:textSize="18sp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
+        android:padding="10dp"
       />
 
     <TextView
@@ -51,9 +71,10 @@
         android:id="@+id/articleLink"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textColor="@color/linkText"
-        android:fontFamily="sans-serif"
+        android:fontFamily="monospace"
         android:textSize="18sp"
         android:layout_marginTop="0dp"
+
     />
 
 
@@ -65,8 +86,12 @@
         android:layout_centerHorizontal="true"
         android:id="@+id/articleAuthor"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:fontFamily="sans-serif"
-        android:textColor="@color/background"
+        android:shadowColor="@android:color/black"
+        android:shadowDx="3"
+        android:shadowDy="-3"
+        android:shadowRadius="1.5"
+        android:fontFamily="monospace"
+        android:textColor="@color/primaryText"
         android:textSize="18sp"
         android:layout_marginTop="10dp"
         />
@@ -77,10 +102,12 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/articleAuthor"
         android:layout_centerHorizontal="true"
+        android:textColor="@color/colorPrimary"
         android:id="@+id/articlePubDate"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:fontFamily="sans-serif"
+        android:fontFamily="monospace"
         android:textSize="18sp"
+        android:paddingBottom="20dp"
         android:layout_marginTop="10dp"
         />
 
