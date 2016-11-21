@@ -89,12 +89,13 @@ public class RSSXMLPullParser {
                             Log.i("Stuff","Img:" + finalContents);
 
                             String description[]=finalParts[1].split("Continue reading");
-                            Log.i("Description","\nDescription:" + description[0]);
+                            String finalDescription=description[0];
+                            Log.i("Description","\nDescription:" + finalDescription);
 
 
                             result.get(counter).setImage(finalContents);
 
-                            versionBasedEscapedHTML(result, KEY_IMAGE,description[0],counter);
+                            versionBasedEscapedHTML(result, KEY_IMAGE,finalDescription,counter);
                         }
                         else if (name.equals(KEY_AUTHOR))
                         {
