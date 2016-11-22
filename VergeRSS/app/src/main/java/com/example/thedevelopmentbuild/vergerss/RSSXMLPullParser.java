@@ -78,20 +78,30 @@ public class RSSXMLPullParser {
                             result.get(counter).setTitle(text);
                         }
                         else if (name.equals(KEY_IMAGE)) {
+                            String finalContents;
+                            String finalDescription;
 
                             //Full Text
-                            Log.i("Info", text);
+                            Log.i("Info",text );
 
-                            String[] parts=text.split("src=\"");
-                            String[]finalParts=parts[1].split("\" />");
+                            if(text.contains("src=\"")){
 
-                            String finalContents=finalParts[0];
-                            Log.i("Stuff","Img:" + finalContents);
+                                String[] parts=text.split("src=\"");
+                                String[]finalParts=parts[1].split("\" />");
 
-                            String description[]=finalParts[1].split("Continue reading");
-                            String finalDescription=description[0];
-                            Log.i("Description","\nDescription:" + finalDescription);
+                                finalContents=finalParts[0];
+                                Log.i("Stuff","Img(" +counter+"):" + finalContents);
 
+                                String description[]=finalParts[1].split("Continue reading");
+                                finalDescription=description[0];
+                                Log.i("Description","\nDescription:" + finalDescription);
+                            }
+                            else{
+                                finalContents="http://img11.deviantart.net/7f74/i/2012/178/c/9/the_verge_wallpaper_pack_by_techkidtarek-d538zxb.png";
+                                finalDescription=text;
+                                Log.i("Description","\nDescription:" + finalDescription);
+
+                            }
 
                             result.get(counter).setImage(finalContents);
 
