@@ -1,9 +1,0 @@
-<resources>
-    <string name="app_name">TechBean</string>
-    <string name="article_title">Article Title</string>
-    <string name="date">Date</string>
-    <string name="link">Link</string>
-    <string name="author">Author</string>
-    <string name="article_date">Date</string>
-    <string name="article_description">description</string>
-</resources>
