@@ -2,6 +2,8 @@ package com.example.thedevelopmentbuild.vergerss;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.res.ColorStateList;
+import android.content.res.Resources;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -9,7 +11,11 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.PopupMenu;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -30,6 +36,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 public class TabOverview extends AppCompatActivity {
 
+    public static int mapType=1;
 
     Toolbar toolbar;
     TabLayout tabLayout;
@@ -47,11 +54,14 @@ public class TabOverview extends AppCompatActivity {
 
 
         infoButton = (FloatingActionButton)findViewById(R.id.info);
+        infoButton.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color
+                .colorPrimary)));
         if(infoButton==null)throw new AssertionError();
         infoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showDialog();
+               // showDialog();
+                showPopUp(v);
             }
         });
 
@@ -80,6 +90,47 @@ public class TabOverview extends AppCompatActivity {
         });
         alertDialog.show();
     }
+
+
+    public void showPopUp(View v){
+        PopupMenu popup = new PopupMenu(this, v);
+        MenuInflater inflater = popup.getMenuInflater();
+        inflater.inflate(R.menu.map_options_menu, popup.getMenu());
+        popup.show();
+        setUpPopEventManger(popup);
+    }
+
+    public void setUpPopEventManger(PopupMenu pop){
+        pop.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.info:
+                        showDialog();
+                        return true;
+                    case R.id.hybrid:
+                        CoffeeActivity.mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+                        return true;
+                    case R.id.normal:
+                        CoffeeActivity.mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+                        return true;
+                    case R.id.satellite:
+                       CoffeeActivity.mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+                        return true;
+                    case R.id.terrain:
+                        CoffeeActivity.mMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
+                        return true;
+                    case R.id.none:
+                        CoffeeActivity.mMap.setMapType(GoogleMap.MAP_TYPE_NONE);
+                        return true;
+
+                    default:
+                        return false;
+                }
+            }
+        });
+    }
+
 
 
 }

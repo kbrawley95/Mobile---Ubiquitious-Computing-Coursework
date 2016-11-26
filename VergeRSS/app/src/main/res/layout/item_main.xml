@@ -22,7 +22,7 @@
         android:layout_centerHorizontal="true"
         android:layout_toRightOf="@+id/itemImage"
         android:layout_toEndOf="@id/itemImage"
-        android:paddingTop="10dp"
+        android:paddingTop="0dp"
         android:layout_marginStart="15dp"
         android:layout_marginLeft="15dp"
         android:shadowColor="@android:color/black"

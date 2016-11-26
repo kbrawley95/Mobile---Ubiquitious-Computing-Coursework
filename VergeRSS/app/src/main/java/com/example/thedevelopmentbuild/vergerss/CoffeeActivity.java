@@ -1,13 +1,19 @@
 package com.example.thedevelopmentbuild.vergerss;
 
 
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.widget.PopupMenuCompat;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.PopupMenu;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -21,13 +27,15 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.io.Console;
+
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class CoffeeActivity extends Fragment implements OnMapReadyCallback{
 
-    private GoogleMap mMap;
+    public static GoogleMap mMap;
     private static final int ERROR_DIALOG_REQUEST = 9001;
 
     public CoffeeActivity() {
@@ -55,6 +63,8 @@ public class CoffeeActivity extends Fragment implements OnMapReadyCallback{
 
     }
 
+
+
     public boolean checkServices() {
 
         int isAvailable = GooglePlayServicesUtil.isGooglePlayServicesAvailable(getContext());
@@ -79,13 +89,15 @@ public class CoffeeActivity extends Fragment implements OnMapReadyCallback{
     @Override
     public void onMapReady(GoogleMap googleMap) {
 
-        setupLocation(googleMap, 55.864237, -4.251806, 15, "Costa Coffee");
-        setupLocation(googleMap, 55.865158, -4.259999, 15, "Costa Coffee");
-        setupLocation(googleMap, 55.864173, -4.254602, 15, "Starbucks");
-        setupLocation(googleMap, 55.861135, -4.260008, 15, "Starbucks");
-        setupLocation(googleMap, 55.863773, -4.251751, 15, "Cafe Nero");
-        setupLocation(googleMap, 55.862696, -4.25205, 15, "AMT Coffee");
-        setupLocation(googleMap, 55.864903, -4.254551, 15, "Coffee Republic");
+        mMap=googleMap;
+
+        setupLocation(mMap, 55.864237, -4.251806, 15, "Costa Coffee");
+        setupLocation(mMap, 55.865158, -4.259999, 15, "Costa Coffee");
+        setupLocation(mMap, 55.864173, -4.254602, 15, "Starbucks");
+        setupLocation(mMap, 55.861135, -4.260008, 15, "Starbucks");
+        setupLocation(mMap, 55.863773, -4.251751, 15, "Cafe Nero");
+        setupLocation(mMap, 55.862696, -4.25205, 15, "AMT Coffee");
+        setupLocation(mMap, 55.864903, -4.254551, 15, "Coffee Republic");
 
     }
 
@@ -98,7 +110,10 @@ public class CoffeeActivity extends Fragment implements OnMapReadyCallback{
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoomLevel));
 
         mMap.addMarker(new MarkerOptions().title(markerTitle).position(latLng));
-
     }
+
+
+
+
 }
 
