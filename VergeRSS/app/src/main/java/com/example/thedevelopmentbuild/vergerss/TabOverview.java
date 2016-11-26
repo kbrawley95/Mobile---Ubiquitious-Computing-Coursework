@@ -1,11 +1,16 @@
 package com.example.thedevelopmentbuild.vergerss;
 
+import android.*;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.pm.PackageManager;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
+import android.location.Location;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -20,6 +25,8 @@ import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
@@ -29,6 +36,8 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import static com.example.thedevelopmentbuild.vergerss.CoffeeActivity.MY_PERMISSIONS_REQUEST_READ_CONTACTS;
 
 /**
  * Created by kiera on 20/11/2016.
@@ -123,6 +132,11 @@ public class TabOverview extends AppCompatActivity {
                     case R.id.none:
                         CoffeeActivity.mMap.setMapType(GoogleMap.MAP_TYPE_NONE);
                         return true;
+                    case R.id.currentLocation:
+                        CoffeeActivity coffee = new CoffeeActivity();
+                        coffee.showCurrentLocation();
+                        return true;
+
 
                     default:
                         return false;
@@ -131,6 +145,41 @@ public class TabOverview extends AppCompatActivity {
         });
     }
 
+    public  Location checkPermission(GoogleApiClient gAPI){
 
 
+        // Here, thisActivity is the current activity
+        if (ActivityCompat.checkSelfPermission(this,
+                android.Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED) {
+
+            // Should we show an explanation?
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                    android.Manifest.permission.ACCESS_FINE_LOCATION)) {
+
+                // Show an explanation to the user *asynchronously* -- don't block
+                // this thread waiting for the user's response! After the user
+                // sees the explanation, try again to request the permission.
+
+            } else {
+
+                // No explanation needed, we can request the permission.
+
+                ActivityCompat.requestPermissions(this,
+                        new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
+                        MY_PERMISSIONS_REQUEST_READ_CONTACTS);
+
+                // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
+                // app-defined int constant. The callback method gets the
+                // result of the request.
+            }
+
+
+
+    }
+
+            return LocationServices.FusedLocationApi.getLastLocation(gAPI);
+
+
+    }
 }
