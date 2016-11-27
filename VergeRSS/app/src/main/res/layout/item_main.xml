@@ -37,6 +37,24 @@
         android:textStyle="bold"
         android:text="@string/article_title" tools:ignore="UnusedAttribute"/>
 
+    <TextView
+        android:id="@+id/itemDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="0dp"
+        android:shadowColor="@android:color/black"
+        android:shadowDx="3"
+        android:shadowDy="-3"
+        android:shadowRadius="1.5"
+        android:textSize="18sp"
+        android:textColor="@color/primaryText"
+        android:textAllCaps="true"
+        android:fontFamily="serif-monospace"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textStyle="bold"
+        android:text="@string/article_title" tools:ignore="UnusedAttribute"
+        android:layout_below="@+id/itemTitle" android:layout_alignLeft="@+id/itemTitle"
+        android:layout_alignStart="@+id/itemTitle"/>
 
 
 </RelativeLayout>

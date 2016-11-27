@@ -6,9 +6,12 @@ import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -31,6 +34,10 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.places.Place;
+import com.google.android.gms.location.places.PlaceFilter;
+import com.google.android.gms.location.places.internal.PlaceEntity;
+import com.google.android.gms.location.places.ui.PlacePicker;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -41,7 +48,12 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import org.json.JSONArray;
+
 import java.io.Console;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -120,30 +132,42 @@ public class CoffeeActivity extends Fragment implements OnMapReadyCallback,
 
         mMap = googleMap;
 
-        setupLocation(mMap, 55.864237, -4.251806, 15, "Costa Coffee");
-        setupLocation(mMap, 55.865158, -4.259999, 15, "Costa Coffee");
-        setupLocation(mMap, 55.864173, -4.254602, 15, "Starbucks");
-        setupLocation(mMap, 55.861135, -4.260008, 15, "Starbucks");
-        setupLocation(mMap, 55.863773, -4.251751, 15, "Cafe Nero");
-        setupLocation(mMap, 55.862696, -4.25205, 15, "AMT Coffee");
-        setupLocation(mMap, 55.864903, -4.254551, 15, "Coffee Republic");
+        try {
+            setupLocation(mMap, 55.864237, -4.251806, 15);
+            setupLocation(mMap, 55.865158, -4.259999, 15);
+            setupLocation(mMap, 55.864173, -4.254602, 15);
+            setupLocation(mMap, 55.861135, -4.260008, 15);
+            setupLocation(mMap, 55.863773, -4.251751, 15);
+            setupLocation(mMap, 55.862696, -4.25205, 15);
+            setupLocation(mMap, 55.864903, -4.254551, 15);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
 
-    private void setupLocation(GoogleMap mMap, double lat, double lng, int zoomLevel, String
-            markerTitle) {
+    private void setupLocation(GoogleMap mMap, double lat, double lng, int zoomLevel) throws IOException {
 
         LatLng latLng = new LatLng(lat, lng);
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoomLevel));
 
+        Geocoder geocoder = new Geocoder(getContext());
+        List<Address> addressList = geocoder.getFromLocation(latLng.latitude, latLng.longitude,1);
+
+        Address add = addressList.get(0);
+
+
         mMap.addMarker(new MarkerOptions()
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_icons))
+                .snippet(add.getPostalCode())
                 .title
-                (markerTitle)
-                .position
-                (latLng));
+                (add.getCountryName())
+                .position(latLng)
+        );
+
         mMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
+
     }
 
     public void showCurrentLocation() {

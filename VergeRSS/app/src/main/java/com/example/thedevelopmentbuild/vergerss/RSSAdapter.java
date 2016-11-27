@@ -2,8 +2,11 @@ package com.example.thedevelopmentbuild.vergerss;
 
 import android.content.Context;
 
+import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -43,6 +46,7 @@ public class RSSAdapter extends ArrayAdapter<RSSItem> {
 
         //Lookup view for data population
         TextView articleTitle = (TextView)row.findViewById(R.id.itemTitle);
+        TextView articleDate = (TextView)row.findViewById(R.id.itemDate);
         final ImageView articleImage= (ImageView) row.findViewById(R.id.itemImage);
 //        TextView author =(TextView)row.findViewById(R.id.articleAuthor);
 //        TextView date = (TextView)row.findViewById(R.id.publicationDateText);
@@ -52,7 +56,8 @@ public class RSSAdapter extends ArrayAdapter<RSSItem> {
         new DownloadImageTask((ImageView) row.findViewById(R.id.itemImage))
                 .execute(getItem(pos).getImage());
 //        author.setText(getItem(pos).getAuthor());
-//        date.setText(getItem(pos).getPublicationDate());
+        articleDate.setText(getItem(pos).getPublicationDate());
+        articleDate.setTextColor(getContext().getResources().getColor(R.color.colorPrimary));
         //row.setBackgroundColor(getContext().getResources().getColor(R.color.background));
 
         //Alter Initial View Image

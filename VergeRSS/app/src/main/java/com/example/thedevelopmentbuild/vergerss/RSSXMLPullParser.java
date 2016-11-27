@@ -22,7 +22,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import static android.content.ContentValues.TAG;
@@ -68,7 +70,10 @@ public class RSSXMLPullParser {
                     case XmlPullParser.END_TAG:
                         if (name.equals(KEY_PUBLICATION_DATE))
                         {
-                            result.get(counter).setPublicationDate(text);
+
+                            String edited=text.replace("T"," ");
+
+                            result.get(counter).setPublicationDate(edited);
                             counter++;
                         }
                         else if (name.equals(KEY_TITLE))
