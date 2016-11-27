@@ -15,6 +15,8 @@ public  class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
         this.bmImage = bmImage;
     }
 
+    /*Reads in a image, which is extracted from the targeted RSS Feed, and converts it into a
+    usable Bitmap drawable resource.*/
     @Override
     protected Bitmap doInBackground(String... urls) {
         String urlDisplay = urls[0];

@@ -37,20 +37,21 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.io.IOException;
+
 import static com.example.thedevelopmentbuild.vergerss.CoffeeActivity.MY_PERMISSIONS_REQUEST_READ_CONTACTS;
 
-/**
- * Created by kiera on 20/11/2016.
- */
-
+/*Tabbed Menu implemented to enable navigation between fragmented views*/
 public class TabOverview extends AppCompatActivity {
 
     public static int mapType=1;
 
+    //Widget Declarations
     Toolbar toolbar;
     TabLayout tabLayout;
     ViewPager viewPager;
 
+    //Viewpager (Enables swiping between fragment activities)
     ViewPagerAdapter viewPagerAdapter;
     FloatingActionButton infoButton;
 
@@ -77,6 +78,9 @@ public class TabOverview extends AppCompatActivity {
         tabLayout = (TabLayout)findViewById(R.id.tabLayout);
         viewPager = (ViewPager)findViewById(R.id.viewPager);
 
+        /*Adding Fragments to the viewPagerAdapter. This handles how the fragments are displayed
+        on screen. i.e. order of swipable activities/Tab titles.
+         */
         viewPagerAdapter= new ViewPagerAdapter(getSupportFragmentManager());
         viewPagerAdapter.addFragments(new MainActivity(), "News");
         viewPagerAdapter.addFragments(new CoffeeActivity(), "Coffee Shops");
@@ -87,6 +91,7 @@ public class TabOverview extends AppCompatActivity {
 
     }
 
+    /*Used to display the about dialog box on screen*/
     private void showDialog(){
         AlertDialog alertDialog = new AlertDialog.Builder(TabOverview.this).create();
         alertDialog.setTitle("About");
@@ -101,6 +106,7 @@ public class TabOverview extends AppCompatActivity {
     }
 
 
+    /*Used to display items list menu when the user taps the floating action button*/
     public void showPopUp(View v){
         PopupMenu popup = new PopupMenu(this, v);
         MenuInflater inflater = popup.getMenuInflater();
@@ -109,6 +115,7 @@ public class TabOverview extends AppCompatActivity {
         setUpPopEventManger(popup);
     }
 
+    /*Manages the appropriate behaviour of the items within menu when clicked/tapped*/
     public void setUpPopEventManger(PopupMenu pop){
         pop.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
@@ -133,8 +140,7 @@ public class TabOverview extends AppCompatActivity {
                         CoffeeActivity.mMap.setMapType(GoogleMap.MAP_TYPE_NONE);
                         return true;
                     case R.id.currentLocation:
-                        CoffeeActivity coffee = new CoffeeActivity();
-                        coffee.showCurrentLocation();
+
                         return true;
 
 
@@ -145,41 +151,5 @@ public class TabOverview extends AppCompatActivity {
         });
     }
 
-    public  Location checkPermission(GoogleApiClient gAPI){
 
-
-        // Here, thisActivity is the current activity
-        if (ActivityCompat.checkSelfPermission(this,
-                android.Manifest.permission.ACCESS_FINE_LOCATION)
-                != PackageManager.PERMISSION_GRANTED) {
-
-            // Should we show an explanation?
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
-                    android.Manifest.permission.ACCESS_FINE_LOCATION)) {
-
-                // Show an explanation to the user *asynchronously* -- don't block
-                // this thread waiting for the user's response! After the user
-                // sees the explanation, try again to request the permission.
-
-            } else {
-
-                // No explanation needed, we can request the permission.
-
-                ActivityCompat.requestPermissions(this,
-                        new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
-                        MY_PERMISSIONS_REQUEST_READ_CONTACTS);
-
-                // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
-                // app-defined int constant. The callback method gets the
-                // result of the request.
-            }
-
-
-
-    }
-
-            return LocationServices.FusedLocationApi.getLastLocation(gAPI);
-
-
-    }
 }

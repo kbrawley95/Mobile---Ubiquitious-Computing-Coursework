@@ -24,15 +24,17 @@ public class ArticleActivity extends AppCompatActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.article_main);
 
+        //Acquiring data passed through the MainActivity class, packaged as a parcelable object.
         RSSItem rssItem= getIntent().getExtras().getParcelable(ITEM_KEY);
 
-
+        //Declaration of layout widgets
         TextView articleTitle = (TextView)findViewById(R.id.articleTitle);
         TextView articleDate = (TextView)findViewById(R.id.articlePubDate);
         TextView articleDescription = (TextView)findViewById(R.id.articleDescription);
         TextView articleLink = (TextView)findViewById(R.id.articleLink);
         TextView articleAuthor = (TextView)findViewById(R.id.articleAuthor);
 
+        //If the parcelable data is available, populate the view.
         if (rssItem != null) {
             new DownloadImageTask((ImageView)findViewById(R.id.articleImage))
                     .execute(rssItem.getImage());
@@ -50,6 +52,7 @@ public class ArticleActivity extends AppCompatActivity implements View.OnClickLi
 
     }
 
+    /*OnClick event listener; transports users to article host site.*/
     @Override
     public void onClick(View v) {
 

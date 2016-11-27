@@ -5,9 +5,7 @@ import android.os.Parcelable;
 
 import java.util.UUID;
 
-/**
- * Created by kieran on 31/10/2016.
- */
+/*Class that represents an article extracted from the target RSS Feed*/
 
 public class RSSItem implements Parcelable {
 

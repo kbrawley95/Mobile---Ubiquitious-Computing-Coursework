@@ -15,9 +15,7 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
-/**
- * Created by Kieran Brawley. Matric No:S1433740
- */
+
 public class RSSDownloader {
 
     //Tag for Log statements

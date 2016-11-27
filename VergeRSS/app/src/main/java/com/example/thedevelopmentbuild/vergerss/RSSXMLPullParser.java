@@ -30,10 +30,6 @@ import java.util.List;
 import static android.content.ContentValues.TAG;
 
 
-/**
- * Created by Kieran Brawley. Matric No:S1433740
- */
-
 public class RSSXMLPullParser {
 
 

@@ -22,18 +22,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-/**
- * Created by Kieran Brawley. Matric No:S1433740
- */
 
 public class RSSAdapter extends ArrayAdapter<RSSItem> {
 
-
+    /*Constructor */
     public RSSAdapter(Context context, ArrayList<RSSItem> results){
         super(context,0,results);
 
     }
 
+    /*Inflater/Generates the listview of Articles for the MainActivity layout*/
     @Override
     public View getView(int pos, View convertView, ViewGroup parent){
         RelativeLayout row=(RelativeLayout)convertView;
