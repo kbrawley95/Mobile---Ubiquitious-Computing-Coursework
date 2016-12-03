@@ -39,12 +39,11 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.io.IOException;
 
-import static com.example.thedevelopmentbuild.vergerss.CoffeeActivity.MY_PERMISSIONS_REQUEST_READ_CONTACTS;
 
 /*Tabbed Menu implemented to enable navigation between fragmented views*/
 public class TabOverview extends AppCompatActivity {
 
-    public static int mapType=1;
+    public static int mapType = 1;
 
     //Widget Declarations
     Toolbar toolbar;
@@ -59,40 +58,40 @@ public class TabOverview extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.new_main);
-        toolbar=(Toolbar)findViewById(R.id.toolBar);
+        toolbar = (Toolbar) findViewById(R.id.toolBar);
         setSupportActionBar(toolbar);
 
 
-        infoButton = (FloatingActionButton)findViewById(R.id.info);
+        infoButton = (FloatingActionButton) findViewById(R.id.info);
         infoButton.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color
                 .colorPrimary)));
-        if(infoButton==null)throw new AssertionError();
+        if (infoButton == null) throw new AssertionError();
         infoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // showDialog();
                 showPopUp(v);
             }
         });
 
-        tabLayout = (TabLayout)findViewById(R.id.tabLayout);
-        viewPager = (ViewPager)findViewById(R.id.viewPager);
+        tabLayout = (TabLayout) findViewById(R.id.tabLayout);
+        viewPager = (ViewPager) findViewById(R.id.viewPager);
 
         /*Adding Fragments to the viewPagerAdapter. This handles how the fragments are displayed
         on screen. i.e. order of swipable activities/Tab titles.
          */
-        viewPagerAdapter= new ViewPagerAdapter(getSupportFragmentManager());
+        viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
         viewPagerAdapter.addFragments(new MainActivity(), "News");
         viewPagerAdapter.addFragments(new CoffeeActivity(), "Coffee Shops");
         viewPagerAdapter.addFragments(new MainActivity(), "Other");
 
         viewPager.setAdapter(viewPagerAdapter);
+
         tabLayout.setupWithViewPager(viewPager);
 
     }
 
     /*Used to display the about dialog box on screen*/
-    private void showDialog(){
+    private void showDialog() {
         AlertDialog alertDialog = new AlertDialog.Builder(TabOverview.this).create();
         alertDialog.setTitle("About");
         alertDialog.setMessage("This is a news app for tech enthusiasts with a caffeine addiction");
@@ -107,7 +106,7 @@ public class TabOverview extends AppCompatActivity {
 
 
     /*Used to display items list menu when the user taps the floating action button*/
-    public void showPopUp(View v){
+    public void showPopUp(View v) {
         PopupMenu popup = new PopupMenu(this, v);
         MenuInflater inflater = popup.getMenuInflater();
         inflater.inflate(R.menu.map_options_menu, popup.getMenu());
@@ -116,7 +115,7 @@ public class TabOverview extends AppCompatActivity {
     }
 
     /*Manages the appropriate behaviour of the items within menu when clicked/tapped*/
-    public void setUpPopEventManger(PopupMenu pop){
+    public void setUpPopEventManger(PopupMenu pop) {
         pop.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
@@ -131,7 +130,7 @@ public class TabOverview extends AppCompatActivity {
                         CoffeeActivity.mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
                         return true;
                     case R.id.satellite:
-                       CoffeeActivity.mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+                        CoffeeActivity.mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
                         return true;
                     case R.id.terrain:
                         CoffeeActivity.mMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
@@ -140,7 +139,6 @@ public class TabOverview extends AppCompatActivity {
                         CoffeeActivity.mMap.setMapType(GoogleMap.MAP_TYPE_NONE);
                         return true;
                     case R.id.currentLocation:
-
                         return true;
 
 
@@ -150,6 +148,5 @@ public class TabOverview extends AppCompatActivity {
             }
         });
     }
-
-
 }
+
