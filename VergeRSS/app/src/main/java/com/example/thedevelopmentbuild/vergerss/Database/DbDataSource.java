@@ -17,14 +17,14 @@ import java.util.List;
  * Created by kiera on 03/12/2016.
  */
 
-public class DataSource {
+public class DbDataSource {
 
     private Context mContext;
     private SQLiteDatabase mDatabase;
     private DBHelper mDbHelper;
 
 
-    public DataSource(Context context) {
+    public DbDataSource(Context context) {
         this.mContext = context;
         mDbHelper = new DBHelper(context);
         mDatabase=mDbHelper.getWritableDatabase();
@@ -35,7 +35,7 @@ public class DataSource {
     }
 
     public void close(){
-        mDatabase.close();
+        mDbHelper.close();
     }
 
     public DataItem createItem(DataItem item){
@@ -70,8 +70,8 @@ public class DataSource {
     public List<DataItem> getAllItems(){
         List<DataItem>dataItems = new ArrayList<>();
 
-        Cursor cursor =mDatabase.query(MapLocationsTable.TABLES_ITEMS, MapLocationsTable
-                .ALL_COLUMNS, null, null, null, null, null);
+        Cursor cursor =mDatabase.query(MapLocationsTable.TABLES_ITEMS,
+                MapLocationsTable.ALL_COLUMNS, null, null, null, null, null);
 
         while(cursor.moveToNext()){
 

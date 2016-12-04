@@ -1,19 +1,9 @@
 package com.example.thedevelopmentbuild.vergerss;
 
 
-import android.*;
 import android.Manifest;
-import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.database.sqlite.SQLiteException;
-import android.graphics.Camera;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.location.Address;
-import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -21,18 +11,10 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.widget.PopupMenuCompat;
-import android.text.style.CharacterStyle;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.PopupMenu;
 import android.widget.Toast;
 
 import com.example.thedevelopmentbuild.vergerss.GoogleMapLocations.Coordinates;
@@ -42,45 +24,21 @@ import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.common.api.PendingResult;
-import com.google.android.gms.common.api.ResultCallback;
-import com.google.android.gms.common.api.Status;
 import com.google.android.gms.fitness.data.DataSource;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.location.places.AutocompleteFilter;
-import com.google.android.gms.location.places.AutocompletePrediction;
-import com.google.android.gms.location.places.AutocompletePredictionBuffer;
-import com.google.android.gms.location.places.Place;
-import com.google.android.gms.location.places.PlaceFilter;
-import com.google.android.gms.location.places.PlaceLikelihood;
-import com.google.android.gms.location.places.PlaceLikelihoodBuffer;
 import com.google.android.gms.location.places.Places;
-import com.google.android.gms.location.places.internal.PlaceEntity;
-import com.google.android.gms.location.places.ui.PlaceAutocomplete;
-import com.google.android.gms.location.places.ui.PlaceAutocompleteFragment;
-import com.google.android.gms.location.places.ui.PlacePicker;
-import com.google.android.gms.location.places.ui.PlaceSelectionListener;
-import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-import org.json.JSONArray;
-import java.io.Console;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
+import com.example.thedevelopmentbuild.vergerss.Database.DbDataSource;
 
-import static android.R.id.list;
-import static com.google.android.gms.wearable.DataMap.TAG;
+import java.io.IOException;
+import java.util.List;
 
 
 /**
@@ -104,7 +62,7 @@ public class CoffeeActivity extends Fragment implements OnMapReadyCallback,
     private FloatingActionButton placepicker;
     private LatLng autoStartLocation;
 
-    private com.example.thedevelopmentbuild.vergerss.Database.DataSource mDataSource;
+    private DbDataSource mDataSource;
     List<DataItem> dataItemList = Coordinates.dataItemList;
     List<DataItem>dbList;
     public CoffeeActivity() {
@@ -159,11 +117,12 @@ public class CoffeeActivity extends Fragment implements OnMapReadyCallback,
 
 
 
-            mDataSource = new com.example.thedevelopmentbuild.vergerss.Database.DataSource(getContext());
+            mDataSource = new DbDataSource(getContext());
             mDataSource.open();
             mDataSource.seedDatabase(dataItemList);
+
             Toast.makeText(getContext(), "Database Acquired!", Toast.LENGTH_SHORT).show();
-            dbList =mDataSource.getAllItems();
+            dbList=mDataSource.getAllItems();
 
 
         } else {

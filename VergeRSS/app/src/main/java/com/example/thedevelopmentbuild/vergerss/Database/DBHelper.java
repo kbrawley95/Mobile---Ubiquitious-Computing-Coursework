@@ -10,7 +10,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DBHelper extends SQLiteOpenHelper {
 
-    public static final String DB_FILE_NAME ="techbean.db";
+    public static final String DB_FILE_NAME ="bean.db";
     public static final int DB_VERSION = 1;
 
     public DBHelper(Context context) {

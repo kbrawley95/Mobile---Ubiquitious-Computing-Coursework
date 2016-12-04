@@ -22,10 +22,10 @@ public class DataItem {
 
     }
     public DataItem(String id, String name, String address, double latitude, double longitude){
-        itemId=id;
-        if(itemId==null){
-            itemId= UUID.randomUUID().toString();
+        if(id==null){
+            id=UUID.randomUUID().toString();
         }
+        itemId=id;
         itemName=name;
         itemAddress = address;
         itemLat=latitude;

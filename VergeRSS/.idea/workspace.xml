@@ -28,18 +28,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="54bb08ef-7f94-48b9-b4d2-0515a3adc9fe" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/thedevelopmentbuild/vergerss/Database/DBHelper.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/thedevelopmentbuild/vergerss/Database/DataSource.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/thedevelopmentbuild/vergerss/Database/MapLocationsTable.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/thedevelopmentbuild/vergerss/GoogleMapLocations/Coordinates.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/thedevelopmentbuild/vergerss/Model/DataItem.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/thedevelopmentbuild/vergerss/Database/DataSource.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/thedevelopmentbuild/vergerss/Database/DbDataSource.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build.gradle" afterPath="$PROJECT_DIR$/app/build.gradle" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/thedevelopmentbuild/vergerss/CoffeeActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/thedevelopmentbuild/vergerss/CoffeeActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/thedevelopmentbuild/vergerss/TabOverview.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/thedevelopmentbuild/vergerss/TabOverview.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/article_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/article_main.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_coffee.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_coffee.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/thedevelopmentbuild/vergerss/Database/DBHelper.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/thedevelopmentbuild/vergerss/Database/DBHelper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/thedevelopmentbuild/vergerss/Model/DataItem.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/thedevelopmentbuild/vergerss/Model/DataItem.java" />
     </list>
     <ignored path="VergeRSS.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -87,8 +80,8 @@
           <file leaf-file-name="CoffeeActivity.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/thedevelopmentbuild/vergerss/CoffeeActivity.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1070">
-                  <caret line="164" column="90" selection-start-line="164" selection-start-column="90" selection-end-line="164" selection-end-column="90" />
+                <state relative-caret-position="852">
+                  <caret line="172" column="0" selection-start-line="172" selection-start-column="0" selection-end-line="172" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -117,18 +110,18 @@
           <file leaf-file-name="DBHelper.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/thedevelopmentbuild/vergerss/Database/DBHelper.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="357">
-                  <caret line="21" column="43" selection-start-line="21" selection-start-column="43" selection-end-line="21" selection-end-column="43" />
+                <state relative-caret-position="255">
+                  <caret line="15" column="38" selection-start-line="15" selection-start-column="38" selection-end-line="15" selection-end-column="38" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="DataSource.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/thedevelopmentbuild/vergerss/Database/DataSource.java">
+          <file leaf-file-name="DbDataSource.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/thedevelopmentbuild/vergerss/Database/DbDataSource.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="516">
-                  <caret line="55" column="21" selection-start-line="55" selection-start-column="21" selection-end-line="55" selection-end-column="21" />
+                <state relative-caret-position="344">
+                  <caret line="32" column="16" selection-start-line="32" selection-start-column="16" selection-end-line="32" selection-end-column="16" />
                   <folding />
                 </state>
               </provider>
@@ -154,16 +147,6 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="TabOverview.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/thedevelopmentbuild/vergerss/TabOverview.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1309">
-                  <caret line="82" column="66" selection-start-line="82" selection-start-column="66" selection-end-line="82" selection-end-column="66" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
         </leaf>
       </split-first>
       <split-second>
@@ -171,8 +154,8 @@
           <file leaf-file-name="DataItem.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/thedevelopmentbuild/vergerss/Model/DataItem.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1377">
-                  <caret line="81" column="65" selection-start-line="81" selection-start-column="65" selection-end-line="81" selection-end-column="65" />
+                <state relative-caret-position="-96">
+                  <caret line="28" column="22" selection-start-line="28" selection-start-column="22" selection-end-line="28" selection-end-column="22" />
                   <folding />
                 </state>
               </provider>
@@ -2469,12 +2452,12 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/thedevelopmentbuild/vergerss/TabOverview.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_place_picker.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_coffee.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/thedevelopmentbuild/vergerss/Database/DBHelper.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/thedevelopmentbuild/vergerss/GoogleMapLocations/Coordinates.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/thedevelopmentbuild/vergerss/Database/DataSource.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/thedevelopmentbuild/vergerss/CoffeeActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/thedevelopmentbuild/vergerss/Database/MapLocationsTable.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/thedevelopmentbuild/vergerss/Model/DataItem.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/thedevelopmentbuild/vergerss/Database/DataSource.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/thedevelopmentbuild/vergerss/Database/DBHelper.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/thedevelopmentbuild/vergerss/CoffeeActivity.java" />
       </list>
     </option>
   </component>
@@ -3032,33 +3015,11 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="1" />
+      <option name="time" value="2" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_coffee.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/article_main.xml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/thedevelopmentbuild/vergerss/CoffeeActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1326">
@@ -3361,17 +3322,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/new_main.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="19" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/thedevelopmentbuild/vergerss/RSSXMLPullParser.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1859">
@@ -3391,10 +3341,45 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/thedevelopmentbuild/vergerss/Database/DBHelper.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/new_main.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="19" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/thedevelopmentbuild/vergerss/Model/DataItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-96">
+          <caret line="28" column="22" selection-start-line="28" selection-start-column="22" selection-end-line="28" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/thedevelopmentbuild/vergerss/GoogleMapLocations/Coordinates.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
-          <caret line="21" column="43" selection-start-line="21" selection-start-column="43" selection-end-line="21" selection-end-column="43" />
+          <caret line="21" column="30" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/sources/android-22/java/lang/ThreadGroup.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="692" column="0" selection-start-line="692" selection-start-column="0" selection-end-line="692" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Android/sdk/sources/android-22/android/os/Trace.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="293">
+          <caret line="221" column="0" selection-start-line="221" selection-start-column="0" selection-end-line="221" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -3407,26 +3392,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/thedevelopmentbuild/vergerss/Model/DataItem.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/thedevelopmentbuild/vergerss/Database/DBHelper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1377">
-          <caret line="81" column="65" selection-start-line="81" selection-start-column="65" selection-end-line="81" selection-end-column="65" />
+        <state relative-caret-position="255">
+          <caret line="15" column="38" selection-start-line="15" selection-start-column="38" selection-end-line="15" selection-end-column="38" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/thedevelopmentbuild/vergerss/Database/DataSource.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/thedevelopmentbuild/vergerss/Database/DbDataSource.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="516">
-          <caret line="55" column="21" selection-start-line="55" selection-start-column="21" selection-end-line="55" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/thedevelopmentbuild/vergerss/GoogleMapLocations/Coordinates.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="30" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
+        <state relative-caret-position="344">
+          <caret line="32" column="16" selection-start-line="32" selection-start-column="16" selection-end-line="32" selection-end-column="16" />
           <folding />
         </state>
       </provider>
@@ -3441,8 +3418,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/thedevelopmentbuild/vergerss/CoffeeActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1070">
-          <caret line="164" column="90" selection-start-line="164" selection-start-column="90" selection-end-line="164" selection-end-column="90" />
+        <state relative-caret-position="852">
+          <caret line="172" column="0" selection-start-line="172" selection-start-column="0" selection-end-line="172" selection-end-column="0" />
           <folding />
         </state>
       </provider>
