@@ -82,9 +82,10 @@ public class TabOverview extends AppCompatActivity {
         viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
         viewPagerAdapter.addFragments(new MainActivity(), "News");
         viewPagerAdapter.addFragments(new CoffeeActivity(), "Coffee Shops");
-        viewPagerAdapter.addFragments(new MainActivity(), "Other");
+        viewPagerAdapter.addFragments(new PiechartFragment(), "Pie Chart");
 
         viewPager.setAdapter(viewPagerAdapter);
+
 
         tabLayout.setupWithViewPager(viewPager);
 

@@ -7,10 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by kiera on 03/12/2016.
- */
-
+/*Sample data set used to populate the google map view*/
 public class Coordinates {
 
     public static List<DataItem> dataItemList;

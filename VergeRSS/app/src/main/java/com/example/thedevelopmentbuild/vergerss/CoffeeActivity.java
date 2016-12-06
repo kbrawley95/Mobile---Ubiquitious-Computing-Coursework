@@ -3,8 +3,10 @@ package com.example.thedevelopmentbuild.vergerss;
 
 import android.Manifest;
 import android.app.Dialog;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -15,6 +17,7 @@ import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.thedevelopmentbuild.vergerss.GoogleMapLocations.Coordinates;
@@ -33,6 +36,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import com.example.thedevelopmentbuild.vergerss.Database.DbDataSource;
@@ -121,7 +125,7 @@ public class CoffeeActivity extends Fragment implements OnMapReadyCallback,
             mDataSource.open();
             mDataSource.seedDatabase(dataItemList);
 
-            Toast.makeText(getContext(), "Database Acquired!", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getContext(), "Database Acquired!", Toast.LENGTH_SHORT).show();
             dbList=mDataSource.getAllItems();
 
 
@@ -177,6 +181,16 @@ public class CoffeeActivity extends Fragment implements OnMapReadyCallback,
     public void onMapReady(GoogleMap googleMap) {
 
         mMap = googleMap;
+
+        mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+            @Override
+            public void onInfoWindowClick(Marker marker) {
+                Intent intent = new Intent();
+                intent.setData(Uri.parse("http://www.google.com"));
+                startActivity(intent);
+            }
+        });
+
         try {
             setupLocation(mMap,15,dbList);
         } catch (IOException e) {
@@ -210,7 +224,7 @@ public class CoffeeActivity extends Fragment implements OnMapReadyCallback,
             IOException {
 
 
-        for(DataItem item: dataItems){
+        for(final DataItem item: dataItems){
 
             LatLng latLng = new LatLng(item.getItemLat(), item.getItemLong());
             mMap.addMarker(new MarkerOptions()
@@ -219,17 +233,21 @@ public class CoffeeActivity extends Fragment implements OnMapReadyCallback,
                     .title(item.getItemName())
                     .position(latLng)
             );
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoomLevel));
-        }
 
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoomLevel));
+
+
+        }
         mMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
 
     }
 
+
+
     private void panToCurrentLocation() throws GooglePlayServicesNotAvailableException, GooglePlayServicesRepairableException {
 
         if(currentLocation==null){
-            Toast.makeText(getActivity(), "Couldn't Connect!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "Enable GPS!", Toast.LENGTH_SHORT).show();
         }
         else{
             LatLng latLng = new LatLng(
@@ -259,7 +277,7 @@ public class CoffeeActivity extends Fragment implements OnMapReadyCallback,
     @Override
     public void onConnected(@Nullable Bundle bundle) {
 
-        Toast.makeText(getContext(), "Ready to map!", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getContext(), "Ready to map!", Toast.LENGTH_SHORT).show();
 
         int permCheck = ContextCompat.checkSelfPermission(getContext(),Manifest.permission
                 .ACCESS_FINE_LOCATION);

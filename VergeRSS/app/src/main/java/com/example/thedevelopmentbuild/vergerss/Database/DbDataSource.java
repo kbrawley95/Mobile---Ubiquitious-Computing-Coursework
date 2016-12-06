@@ -13,9 +13,6 @@ import com.example.thedevelopmentbuild.vergerss.Model.DataItem;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by kiera on 03/12/2016.
- */
 
 public class DbDataSource {
 

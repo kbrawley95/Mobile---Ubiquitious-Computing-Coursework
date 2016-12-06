@@ -2,13 +2,10 @@ package com.example.thedevelopmentbuild.vergerss.Database;
 
 import com.google.android.gms.maps.model.LatLng;
 
-/**
- * Created by kiera on 03/12/2016.
- */
 
 public class MapLocationsTable {
 
-    public static final  String TABLES_ITEMS="items";
+    public static final String TABLES_ITEMS="items";
     public static final String COLUMN_ID = "itemId";
     public static final String COLUMN_NAME="itemName";
     public static final String COLUMN_ADDRESS="itemAddress";
