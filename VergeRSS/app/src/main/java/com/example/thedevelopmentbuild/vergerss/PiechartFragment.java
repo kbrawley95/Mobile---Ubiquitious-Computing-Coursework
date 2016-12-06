@@ -50,31 +50,30 @@ public class PiechartFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+        //Define the view to be displayed
         View view = inflater.inflate(R.layout.fragment_piechart, container, false);
         view.setBackgroundColor(getResources().getColor(R.color.background));
 
         Log.d(TAG, "onCreate: starting to create chart");
 
+        //Reference piechart in xml layout
         pieChart = (PieChart)view.findViewById(R.id.pieChart1);
 
-        //pieChart.setDescription("Sales by employee (In Thousands $) ");
+        //Generate inner  circle
         pieChart.setRotationEnabled(true);
-        //pieChart.setUsePercentValues(true);
-        //pieChart.setHoleColor(Color.BLUE);
-        //pieChart.setCenterTextColor(Color.BLACK);
         pieChart.setHoleRadius(25f);
-        pieChart.setTransparentCircleAlpha(0);
-        pieChart.setCenterText("Revenue(%)");
         pieChart.setHoleColor(Color.BLACK);
+        pieChart.setTransparentCircleAlpha(0);
+
+        pieChart.setCenterText("Revenue(%)");
         pieChart.setCenterTextColor(Color.WHITE);
         pieChart.setCenterTextSize(16);
         pieChart.setDescription(null);
-//        pieChart.setDrawEntryLabels(true);
-//        pieChart.setEntryLabelTextSize(20);
-        //More options just check out the documentation!
 
+        //Handles the population of chart data
         addDataSet();
 
+        /*Handles the touch event for the chart slices (Displaying message info)*/
         pieChart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
             @Override
             public void onValueSelected(Entry e, Highlight h) {
@@ -114,6 +113,8 @@ public class PiechartFragment extends Fragment {
 
     }
 
+    /*Method tasked with the population of chart data, and assigning colours to each of the
+    slices in the chart*/
     private void addDataSet() {
         Log.d(TAG, "addDataSet started");
         ArrayList<PieEntry> yEntrys = new ArrayList<>();
@@ -127,7 +128,7 @@ public class PiechartFragment extends Fragment {
             xEntrys.add(xData[i]);
         }
 
-        //create the data set
+        //Create the data set
         PieDataSet pieDataSet = new PieDataSet(yEntrys, "Popularity stat");
         pieDataSet.setSliceSpace(2);
         pieDataSet.setValueTextSize(12);
@@ -135,7 +136,7 @@ public class PiechartFragment extends Fragment {
 
 
 
-        //add colors to dataset
+        //Add colors to dataset
         ArrayList<Integer> colors = new ArrayList<>();
         colors.add(Color.BLUE);
         colors.add(Color.RED);
@@ -146,12 +147,12 @@ public class PiechartFragment extends Fragment {
 
         pieDataSet.setColors(colors);
 
-        //add legend to chart
+        //Add legend to chart
         Legend legend = pieChart.getLegend();
         legend.setForm(Legend.LegendForm.DEFAULT);
         legend.setPosition(Legend.LegendPosition.ABOVE_CHART_CENTER);
 
-        //create pie data object
+        //Create pie data object
         PieData pieData = new PieData(pieDataSet);
         pieChart.setData(pieData);
         pieChart.invalidate();
